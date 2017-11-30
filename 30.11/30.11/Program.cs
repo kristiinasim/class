@@ -38,6 +38,16 @@ namespace _30._11
             triangle1.Height = 60;
             triangle1.Draw();
 
+            var shapes = new List<Shape>();
+            shape1.x = 22;
+            shape1.y = 8;
+            shape1.Width = 90;
+            shape1.Height = 60;
+            shape1.Draw();
+
+            foreach (var i in shapes)
+            {
+            }
             Console.ReadLine();
         }
     }

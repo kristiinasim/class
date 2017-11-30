@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace _30._11
 {
-    class Triangle
+    class Triangle : Shape
     {
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing rectangle");
+            base.Draw(); //kutsub rectangle draw esile
+        }
     }
 }

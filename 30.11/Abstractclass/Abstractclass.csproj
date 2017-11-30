@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1CA8438-AA2E-4021-AD35-5932C7033F97}</ProjectGuid>
+    <ProjectGuid>{84458C10-7B6F-4CDF-BA5A-2D72F5669F6F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_30._11</RootNamespace>
-    <AssemblyName>30.11</AssemblyName>
+    <RootNamespace>Abstractclass</RootNamespace>
+    <AssemblyName>Abstractclass</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle.cs" />
-    <Compile Include="Shape.cs" />
-    <Compile Include="Triangle.cs" />
+    <Compile Include="shapes.cs" />
+    <Compile Include="square.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
