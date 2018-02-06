@@ -4,6 +4,8 @@ namespace kohvik
 {
     class Program
     {
+        private static int raha;
+
         static void Main(string[] args)
         {
             
@@ -16,7 +18,7 @@ namespace kohvik
             {
                
                 var latte = new Latte();
-                Latte.Ost();
+                latte.Ost(raha);
                
             }
 
