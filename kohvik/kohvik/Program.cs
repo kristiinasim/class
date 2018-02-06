@@ -16,9 +16,8 @@ namespace kohvik
             {
                
                 var latte = new Latte();
-                
-                Console.WriteLine(latte);
-                Console.ReadLine();
+                Latte.Ost();
+               
             }
 
         }
