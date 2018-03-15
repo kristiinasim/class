@@ -268,6 +268,19 @@ namespace DataCollections
                     Console.WriteLine(item.Age + " " + item.Name);
                 }
             }
+            var firstlettergroup =
+                from human in humans1
+                group human by human.Name[0];
+
+            foreach (var humanGroup in firstlettergroup)
+            {
+                Console.WriteLine("Key: " + humanGroup.Key);
+
+                foreach (var human in humanGroup)
+                {
+                    Console.WriteLine(human.Name + " " + human.Age);
+                }
+            }
             #endregion
             Console.ReadLine();
 
