@@ -6,19 +6,50 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-
+using System.IO;
 namespace XML___note
 {
     class Program
     {
         static void Main(string[] args)
         {
-            XmlReader xmlReader = XmlReader.Create("http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml");
-            Console.WriteLine("Mida soovite teha?\n1.Märget luua.\n2.Märget lugeda.\n3.Märget kustutada");
+
+            Console.WriteLine("Mida soovite teha?\n1.Märget luua. (Loo)\n2.Märget lugeda. (Loe)\n3.Märget kustutada (Kustuta)");
             string choice = Console.ReadLine();
-            var chc = new List<Note>();
-            XmlElement element1 = doc.CreateElement(string.Empty, "body", string.Empty);
-            doc.AppendChild(element1);
+
+            //XmlElement element1 = doc.CreateElement(string.Empty, "body", string.Empty);
+            //doc.AppendChild(element1);
+            if (choice == "Loo")
+            {
+                using (XmlWriter writer = XmlWriter.Create(@"C:\Users\Krizzie\Documents\GitHub\class\XML - note\Notes.xml"))
+                {
+                    XmlDocument doc = new XmlDocument();
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("Notes");
+                    Console.WriteLine("Pealkiri:");
+                    writer.WriteStartElement("Pealkiri", Console.ReadLine());
+                    Console.WriteLine("Sisu:");
+                    writer.WriteElementString("Sisu", Console.ReadLine());
+                    writer.WriteEndElement();
+                    doc.Save(writer);
+                    Console.WriteLine("Aitäh! Fail salvestatud!");
+                }
+                if (choice == "Loe")
+                {
+
+
+                    if (choice == "Kustuta")
+                    {
+                        Console.WriteLine("Millist faili soovite kustutada?");
+                        var failinimi = Console.ReadLine();
+                        File.Delete(@"C:\Users\Krizzie\Documents\GitHub\class\XML - note\"failinimi".xml");
+                  
+
+                    }
+                }
+
+            }
         }
     }
 }
+
