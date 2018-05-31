@@ -21,7 +21,10 @@ namespace XML___note
                 Console.WriteLine("Mida soovite teha?\n1.Märget luua. (Loo)\n2.Märget muuta. (Muuda)\n3.Märget kustutada. (Kustuta) \n4.Programmist väljuda. (V2lju)");
 
                 string choice = Console.ReadLine();
+                Console.WriteLine("Pealkiri:");
 
+                var title = Console.ReadLine();
+ 
 
                 //XmlElement element1 = doc.CreateElement(string.Empty, "body", string.Empty);
                 //doc.AppendChild(element1);
@@ -29,9 +32,9 @@ namespace XML___note
 
                 if (choice == "Loo")
                 {
-                    Console.WriteLine("Pealkiri:");
+                    
+                    ////System.IO.File.WriteAllText(@"C:\Users\Krizzie\Documents\GitHub\class\XML - note\Pealkirjad.txt", title);
 
-                    var title = Console.ReadLine();
 
                     using (XmlWriter writer = XmlWriter.Create(@"C:\Users\Krizzie\Documents\GitHub\class\XML - note\" + title + ".xml"))
 
@@ -40,14 +43,9 @@ namespace XML___note
                         writer.WriteStartDocument();
                         writer.WriteStartElement(title);
                         writer.WriteStartElement("Pealkiri", title);
-                        //if (doc.DocumentElement.Attributes["Pealkiri"] != null)
-                        //    Console.WriteLine(doc.DocumentElement.Attributes["Pealkiri"].Value);
                         Console.WriteLine("Sisu:");
                         writer.WriteElementString("Sisu", Console.ReadLine());
-
-                        //if (doc.DocumentElement.Attributes["Sisu"] != null)
-                        //    Console.WriteLine(doc.DocumentElement.Attributes["Sisu"].Value);
-
+               
                         writer.WriteEndElement();
                         doc.Save(writer);
                         Console.WriteLine("Aitäh! Fail salvestatud! Kas soovite veel midagi teha? y/n");
@@ -79,17 +77,40 @@ namespace XML___note
                     Console.WriteLine("Millist faili soovite muuta?");
                     var fail = Console.ReadLine();
                     var pathname = (@"C:\Users\Krizzie\Documents\GitHub\class\XML - note\" + fail + ".xml");
-                    doc.Load(pathname);
-                    doc.SelectSingleNode("/appSettings/add").Attributes["Pealkiri"].Value = Console.ReadLine();
-                    doc.SelectSingleNode("/appSettings/add").Attributes["Sisu"].Value = Console.ReadLine();
+                    XElement d = XElement.Load(pathname);
+
+                   
+                    int Count = 1;
+                    Console.WriteLine("Muuda pealkirja:");
+                    var pealkirim = Console.ReadLine();
+                    //XmlNode node = doc.SelectSingleNode("Pealkiri/" + fail);
+
+
+                    Console.WriteLine(Count + ". " + node.Attributes["Pealkiri"].Value);
+                    node.Attributes["Pealkiri"].Value = pealkirim;
+                    Count += 1;
+
+
+                    //XmlNode node = doc.SelectSingleNode("Root/Node/Element");
+                    //node.Attributes[0].Value = pealkirim;t.Element("level").Element("node1").Value = "";
+                    //d.Element(title).Value = pealkirim;
+                    //d.Element("level").Element("node3").Value = "";
+
+
+                    Console.WriteLine("Muuda sisu:");
+                    var sisum = Console.ReadLine();
+                    XmlNode node2 = doc.SelectSingleNode("Node/" + fail);
+                    //node2.Attributes[1].Value = sisum;
+                    
+                    
                     doc.Save(fail);
 
                 }
-                //if (choice == "V2lju")
-                //{
-                //    break;
-                //    Environment.ExitCode();
-                //}
+                if (choice == "V2lju")
+                {
+                    break;
+                    Environment.Exit(1);
+                }
             }
         }
 
